@@ -10,6 +10,10 @@ import router from "./router";
 // Logger
 import Logger from "../config/logger";
 
+// Middlewares
+import morganMiddleware from "./middleware/morganMiddleware";
+app.use(morganMiddleware);
+
 const port = _default.port;
 
 app.use("/api/", router);

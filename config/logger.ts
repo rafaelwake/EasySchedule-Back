@@ -1,5 +1,5 @@
 import winston from "winston";
-import _default from "../config/default";
+import config from "config";
 
 const levels = {
   error: 0,
@@ -10,7 +10,7 @@ const levels = {
 };
 
 const level = () => {
-  const env = _default.env;
+  const env = config.get<string>("env") || "development";
   const isDevelopment = env === "development";
   return isDevelopment ? "debug" : "warn";
 };
