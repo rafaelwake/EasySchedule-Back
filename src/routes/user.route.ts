@@ -14,7 +14,7 @@ const router = Router();
 
 router.post("/user/register", validateUserFieldsCreateAccount, create);
 router.get("/user/:id", read);
-router.get("/user/", readAll);
+router.get("/user/", AuthMiddleware, readAll);
 router.put("/user/", AuthMiddleware, update);
 router.delete("/user", AuthMiddleware, remove);
 
