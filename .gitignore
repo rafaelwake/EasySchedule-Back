@@ -1,0 +1,19 @@
+# Arquivos de configuração
+.env
+.env.*
+
+# Arquivos gerados
+node_modules/
+build/
+dist/
+
+# Dependências instaladas
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Outros arquivos
+*.log
+*.lock
+*.swp
+.DS_Store
