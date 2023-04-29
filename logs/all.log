@@ -7,3 +7,6 @@
 2023-04-29 11:49:28:4928 - [32minfo[39m: [32mApp rodando na porta: 3000[39m
 2023-04-29 11:50:25:5025 - [32minfo[39m: [32mApp rodando na porta: 3000[39m
 2023-04-29 11:50:54:5054 - [32minfo[39m: [32mApp rodando na porta: 3000[39m
+2023-04-29 11:52:00:520 - [32minfo[39m: [32mApp rodando na porta: 3000[39m
+2023-04-29 11:52:03:523 - [35mhttp[39m: [35mGET /api//test 200 11 - 2.180 ms[39m
+[35m[39m
