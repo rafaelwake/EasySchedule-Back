@@ -1,5 +1,5 @@
-import { SchedulingModel } from "./scheduling.model";
-import { UserModel } from "./user.model";
+import { SchedulingModel } from "../scheduling/scheduling.model";
+import { UserModel } from "../user/user.model";
 
 export interface InviteModel {
   scheduling_id: Number;

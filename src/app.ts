@@ -5,7 +5,7 @@ const app = express();
 import _default from "../config/default";
 
 // Routes
-import router from "./router";
+import router from "../src/routes/router";
 
 // Logger
 import Logger from "../config/logger";

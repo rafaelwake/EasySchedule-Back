@@ -1,6 +1,6 @@
 import { UserModel } from "./user.model";
 
-export interface UserRepository {
+export interface UserRepositoryModel {
   create(user: UserModel): Promise<any>;
   read(id: string): Promise<any>;
   readByEmail(email: string): Promise<UserModel>;
