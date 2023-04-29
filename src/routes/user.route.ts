@@ -8,10 +8,11 @@ import {
   readAll,
 } from "../controllers/user.controller";
 import { AuthMiddleware } from "../middleware/authentication.middleware";
+import { validateUserFieldsCreateAccount } from "../middleware/validateUserFields";
 
 const router = Router();
 
-router.post("/user/register", create);
+router.post("/user/register", validateUserFieldsCreateAccount, create);
 router.get("/user/:id", read);
 router.get("/user/", readAll);
 router.put("/user/", AuthMiddleware, update);

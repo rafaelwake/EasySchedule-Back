@@ -16,6 +16,9 @@ export class AuthAction {
     email: string,
     password: string
   ): Promise<IPayloadResponseModel> {
+    if (!email) {
+      throw new Error("Email is not provided");
+    }
     const user = await this.repository.readByEmail(email.trim());
 
     let output = {
@@ -29,6 +32,7 @@ export class AuthAction {
     if (password != user.password) return output;
 
     output.success = true;
+    output.message = "Login realizado com sucesso!"; // Mensagem alterada para sucesso
 
     const hashService = new JWTHash();
     const token = await hashService.encode({
