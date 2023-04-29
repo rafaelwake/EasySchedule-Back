@@ -18,3 +18,4 @@ yarn-error.log*
 *.lock
 *.swp
 .DS_Store
+database.sqlite

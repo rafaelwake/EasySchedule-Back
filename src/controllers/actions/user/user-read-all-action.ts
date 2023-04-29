@@ -1,12 +1,8 @@
-
-import { IPayloadResponse } from "../../../domain/dto/payload-response.interface";
+import { IPayloadResponseModel } from "../../../models/infra/response/payload-response.model";
 import { UserAction } from "./user-action";
 
-
 export class ReadAllUserAction extends UserAction {
-
-  async execute() : Promise<IPayloadResponse> {
-
+  async execute(): Promise<IPayloadResponseModel> {
     let users = await this.repository.readAll();
 
     users = users.map((user: any) => {
@@ -18,7 +14,7 @@ export class ReadAllUserAction extends UserAction {
     return {
       success: true,
       message: null,
-      data: users
-    }
+      data: users,
+    };
   }
 }

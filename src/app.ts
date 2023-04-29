@@ -1,11 +1,16 @@
-import express from "express";
-const app = express();
+import express, { Response, Request } from "express";
+import router from "../src/routes";
+import * as dotenv from "dotenv";
 
 // ENV Variables
-import _default from "../config/default";
+dotenv.config();
+const PORT = process.env.PORT || 3000;
 
-// Routes
-import router from "../src/routes/router";
+const app = express();
+
+// EXPRESS
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 // Logger
 import Logger from "../config/logger";
@@ -14,10 +19,16 @@ import Logger from "../config/logger";
 import morganMiddleware from "./middleware/morganMiddleware";
 app.use(morganMiddleware);
 
-const port = _default.port;
-
+// Routes
 app.use("/api/", router);
+app.use((req: Request, res: Response) => {
+  Logger.info(req.url);
 
-app.listen(port, async () => {
-  Logger.info(`App rodando na porta: ${port}`);
+  res.status(404).json({
+    message: "route not found!",
+  });
+});
+
+app.listen(PORT, async () => {
+  Logger.info(`App rodando na porta: ${PORT}`);
 });

@@ -5,8 +5,19 @@ import { HttpStatusCode } from "../enum/HttpStatusCode.enum";
 import { ReadUserAction } from "./actions/user/user-read.action";
 import { UpdateUserAction } from "./actions/user/user-update.action";
 import { ReadAllUserAction } from "./actions/user/user-read-all-action";
+import Logger from "../../config/logger";
 
 export async function create(req: Request, res: Response) {
+  console.log("Request body:", req.body); // Adicione esta linha
+
+  if (!req.body || !req.body.name || !req.body.email || !req.body.password) {
+    return res.status(HttpStatusCode.BAD_REQUEST).json({
+      success: false,
+      message: "Request body is missing required fields.",
+    });
+  }
+  Logger.error(req.body);
+  console.log(req.body);
   const action = new CreateUserAction();
 
   const user: Omit<UserModel, "id" | "createdAt"> = {
