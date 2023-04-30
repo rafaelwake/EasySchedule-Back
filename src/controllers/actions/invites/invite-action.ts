@@ -1,21 +1,21 @@
 import { InviteRepositoryModel } from "../../../models/invite/invite-repository.model";
-import { SchedulingRepositoryModel } from "../../../models/scheduling/scheduling-repository.model";
+import { appointmentRepositoryModel } from "../../../models/appointment/appointment-repository.model";
 import { UserRepositoryModel } from "../../../models/user/user-repository.model";
 import SQLiteDB from "../../infra/persistence";
 import { InviteRepository } from "../../repository/invite-repository";
-import { SchedulingRepository } from "../../repository/scheduling-repository";
+import { appointmentRepository } from "../../repository/appointment-repository";
 import { UserRepository } from "../../repository/user-repository";
 
 export abstract class InviteAction {
   protected repository: InviteRepositoryModel;
-  protected schedulingRepository: SchedulingRepositoryModel;
+  protected appointmentRepository: appointmentRepositoryModel;
   protected userRepository: UserRepositoryModel;
 
   constructor() {
     const db = SQLiteDB.getInstance();
 
     this.repository = new InviteRepository(db);
-    this.schedulingRepository = new SchedulingRepository(db);
+    this.appointmentRepository = new appointmentRepository(db);
     this.userRepository = new UserRepository(db);
   }
 }

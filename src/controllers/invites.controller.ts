@@ -11,12 +11,12 @@ export async function create(
   req: any & { user: Partial<UserModel> },
   res: Response
 ) {
-  const scheduling_id = req.body.scheduling_id;
+  const appointment_id = req.body.appointment_id;
   const user_ids = req.body.users;
 
   const action = new CreateInviteAction();
 
-  const result = await action.execute(req.user.id, scheduling_id, user_ids);
+  const result = await action.execute(req.user.id, appointment_id, user_ids);
 
   res.status(200).json(result);
 }

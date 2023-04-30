@@ -1,7 +1,7 @@
 import { IPayloadResponseModel } from "../../../models/infra/response/payload-response.model";
-import { SchedulingAction } from "./scheduling-action";
+import { appointmentAction } from "./appointment-action";
 
-export default class ReadSchedulerAction extends SchedulingAction {
+export default class ReadSchedulerAction extends appointmentAction {
   async execute(
     user_id: string,
     id = undefined

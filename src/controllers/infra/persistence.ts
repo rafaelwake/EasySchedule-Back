@@ -51,7 +51,7 @@ export default class SQLiteDB implements IDatabase {
         );`);
 
       SQLiteDB.instance.db.run(`
-        CREATE TABLE IF NOT EXISTS scheduling(
+        CREATE TABLE IF NOT EXISTS appointment(
           id INTEGER PRIMARY KEY AUTOINCREMENT,
           title TEXT,
           description TEXT,
@@ -66,7 +66,7 @@ export default class SQLiteDB implements IDatabase {
       SQLiteDB.instance.db.run(`
         CREATE TABLE IF NOT EXISTS invites(
           id INTEGER PRIMARY KEY AUTOINCREMENT,
-          scheduling_id INTEGER,
+          appointment_id INTEGER,
           user_id TEXT, 
           created_by TEXT, 
           token TEXT,

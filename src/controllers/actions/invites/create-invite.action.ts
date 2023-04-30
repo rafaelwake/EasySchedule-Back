@@ -7,12 +7,12 @@ import { InviteAction } from "./invite-action";
 export class CreateInviteAction extends InviteAction {
   async execute(
     user_id: string,
-    scheduling_id: number,
+    appointment_id: number,
     users: string[]
   ): Promise<IPayloadResponseModel> {
-    const scheduler = await this.schedulingRepository.readById(
+    const scheduler = await this.appointmentRepository.readById(
       user_id,
-      Number(scheduling_id)
+      Number(appointment_id)
     );
 
     console.log(scheduler);
@@ -43,11 +43,11 @@ export class CreateInviteAction extends InviteAction {
     sendToUsers.forEach(async (user: UserModel) => {
       const token = await sha256.encode(user_id + String(Math.random()));
 
-      await this.repository.create(scheduling_id, {
+      await this.repository.create(appointment_id, {
         token: token,
         created_by: user_id,
         user_id: user.id,
-        scheduling_id: scheduling_id,
+        appointment_id: appointment_id,
         createdAt: String(new Date().toDateString()),
       });
 

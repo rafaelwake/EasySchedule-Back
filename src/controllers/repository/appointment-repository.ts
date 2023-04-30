@@ -1,13 +1,13 @@
-import { SchedulingModel } from "../../models/scheduling/scheduling.model";
-import { SchedulingRepositoryModel } from "../../models/scheduling/scheduling-repository.model";
+import { appointmentModel } from "../../models/appointment/appointment.model";
+import { appointmentRepositoryModel } from "../../models/appointment/appointment-repository.model";
 import { IDatabase } from "../../models/infra/database/database.interface";
 
-export class SchedulingRepository implements SchedulingRepositoryModel {
+export class appointmentRepository implements appointmentRepositoryModel {
   constructor(private readonly database: IDatabase) {}
 
-  async create(user_id: string, event: SchedulingModel): Promise<any> {
+  async create(user_id: string, event: appointmentModel): Promise<any> {
     const result = await this.database.execute(
-      `INSERT INTO scheduling(title, description, date, duration, location, user_id, createdAt) 
+      `INSERT INTO appointment(title, description, date, duration, location, user_id, createdAt) 
                                                 VALUES (?,?,?,?,?,?,?)`,
       [
         event.title,
@@ -27,9 +27,9 @@ export class SchedulingRepository implements SchedulingRepositoryModel {
     console.log(user_id);
     const events = await this.database.execute(
       `SELECT * 
-                                                  FROM scheduling 
-                                                 WHERE scheduling.user_id  = ?
-                                                    OR scheduling.id IN (SELECT invites.scheduling_id  
+                                                  FROM appointment 
+                                                 WHERE appointment.user_id  = ?
+                                                    OR appointment.id IN (SELECT invites.appointment_id  
                                                                            FROM invites WHERE invites.user_id = ?)`,
       [user_id, user_id]
     );
@@ -59,12 +59,12 @@ export class SchedulingRepository implements SchedulingRepositoryModel {
 
     const event = await this.database.execute(
       `
-      SELECT scheduling.*, 
+      SELECT appointment.*, 
               users.name as created_by
-        FROM scheduling, 
+        FROM appointment, 
               users 
-        WHERE scheduling.id = ?
-          AND users.id = scheduling.user_id 
+        WHERE appointment.id = ?
+          AND users.id = appointment.user_id 
     `,
       [id]
     );
@@ -74,9 +74,9 @@ export class SchedulingRepository implements SchedulingRepositoryModel {
     return event || {};
   }
 
-  async update(user_id: string, event: SchedulingModel): Promise<any> {
+  async update(user_id: string, event: appointmentModel): Promise<any> {
     const result = await this.database.execute(
-      `UPDATE scheduling 
+      `UPDATE appointment 
                                                    SET title = ?, 
                                                        description = ?, 
                                                        date = ?, 
@@ -99,11 +99,11 @@ export class SchedulingRepository implements SchedulingRepositoryModel {
 
   async delete(user_id: string, id: number): Promise<void> {
     await this.database.execute(
-      "DELETE FROM invites WHERE scheduling_id = ? AND created_by = ?",
+      "DELETE FROM invites WHERE appointment_id = ? AND created_by = ?",
       [id, user_id]
     );
     await this.database.execute(
-      "DELETE FROM scheduling WHERE id = ? AND user_id = ?",
+      "DELETE FROM appointment WHERE id = ? AND user_id = ?",
       [id, user_id]
     );
   }

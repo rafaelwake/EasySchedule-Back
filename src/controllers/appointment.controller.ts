@@ -1,11 +1,11 @@
 import { Request, Response } from "express";
 import { UserModel } from "../models/user/user.model";
-import { SchedulingModel } from "../models/scheduling/scheduling.model";
+import { appointmentModel } from "../models/appointment/appointment.model";
 import { HttpStatusCode } from "../enum/HttpStatusCode.enum";
-import UpdateSchedulerAction from "../controllers/actions/scheduling/update-scheduling.action";
-import CreateSchedulerAction from "../controllers/actions/scheduling/create-scheduling.action";
-import ReadSchedulerAction from "../controllers/actions/scheduling/read-scheduling.action";
-import DeleteSchedulerAction from "../controllers/actions/scheduling/delete-scheduling.action";
+import UpdateSchedulerAction from "../controllers/actions/appointment/update-appointment.action";
+import CreateSchedulerAction from "../controllers/actions/appointment/create-appointment.action";
+import ReadSchedulerAction from "../controllers/actions/appointment/read-appointment.action";
+import DeleteSchedulerAction from "../controllers/actions/appointment/delete-appointment.action";
 
 export const create = async (
   req: any & { user: Partial<UserModel> },
@@ -13,7 +13,7 @@ export const create = async (
 ) => {
   const user_id = req.user.id;
 
-  const event: Omit<SchedulingModel, "id" | "createdAt"> = {
+  const event: Omit<appointmentModel, "id" | "createdAt"> = {
     title: req.body.title,
     description: req.body.description,
     date: req.body.date,
@@ -48,7 +48,7 @@ export const update = async (
   res: Response
 ) => {
   let user_id = req.user.id;
-  let event: SchedulingModel = {
+  let event: appointmentModel = {
     id: req.body.id,
     title: req.body.title,
     description: req.body.description,

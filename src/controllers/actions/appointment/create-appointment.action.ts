@@ -1,11 +1,11 @@
 import { IPayloadResponseModel } from "../../../models/infra/response/payload-response.model";
-import { SchedulingModel } from "../../../models/scheduling/scheduling.model";
-import { SchedulingAction } from "./scheduling-action";
+import { appointmentModel } from "../../../models/appointment/appointment.model";
+import { appointmentAction } from "./appointment-action";
 
-export default class CreateSchedulerAction extends SchedulingAction {
+export default class CreateSchedulerAction extends appointmentAction {
   async execute(
     user_id: string,
-    event: Omit<SchedulingModel, "id" | "createdAt">
+    event: Omit<appointmentModel, "id" | "createdAt">
   ): Promise<IPayloadResponseModel> {
     let now = new Date();
     let day = now.getDate().toString().padStart(2, "0");
@@ -14,7 +14,7 @@ export default class CreateSchedulerAction extends SchedulingAction {
     let hour = now.getHours().toString().padStart(2, "0");
     let minute = now.getMinutes().toString().padStart(2, "0");
     let formattedDate = `${day}/${month}/${year} ${hour}:${minute}`;
-    const data: SchedulingModel = {
+    const data: appointmentModel = {
       ...event,
       createdAt: formattedDate,
     };

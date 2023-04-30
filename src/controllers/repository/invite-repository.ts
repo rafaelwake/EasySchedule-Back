@@ -5,16 +5,16 @@ import { IDatabase } from "../../models/infra/database/database.interface";
 export class InviteRepository implements InviteRepositoryModel {
   constructor(private readonly database: IDatabase) {}
 
-  async create(scheduling_id: number, invite: InviteModel): Promise<any> {
+  async create(appointment_id: number, invite: InviteModel): Promise<any> {
     await this.database.execute(
-      "DELETE FROM invites WHERE user_id = ? AND scheduling_id = ?",
-      [invite.user_id, invite.scheduling_id]
+      "DELETE FROM invites WHERE user_id = ? AND appointment_id = ?",
+      [invite.user_id, invite.appointment_id]
     );
 
     const result = await this.database.execute(
-      `INSERT INTO invites (scheduling_id, user_id, created_by, token) 
+      `INSERT INTO invites (appointment_id, user_id, created_by, token) 
                                                      VALUES (?, ?, ?, ?)`,
-      [scheduling_id, invite.user_id, invite.created_by, invite.token]
+      [appointment_id, invite.user_id, invite.created_by, invite.token]
     );
 
     return result;
@@ -51,7 +51,7 @@ export class InviteRepository implements InviteRepositoryModel {
 
   async unaccept(id: number, user_id: string): Promise<any> {
     const result = await this.database.execute(
-      "UPDATE invites SET accepted = 0 WHERE scheduling_id = ? AND user_id = ?",
+      "UPDATE invites SET accepted = 0 WHERE appointment_id = ? AND user_id = ?",
       [id, user_id]
     );
 

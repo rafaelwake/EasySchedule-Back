@@ -4,14 +4,14 @@ import {
   read,
   update,
   remove,
-} from "../controllers/scheduling.controller";
+} from "../controllers/appointment.controller";
 import { AuthMiddleware } from "../middleware/authentication.middleware";
 
 const router = Router();
 
-router.post("/scheduling", AuthMiddleware, create);
-router.get("/scheduling/:id?", AuthMiddleware, read);
-router.put("/scheduling", AuthMiddleware, update);
-router.delete("/scheduling/:id", AuthMiddleware, remove);
+router.post("/appointment", AuthMiddleware, create);
+router.get("/appointment/:id?", AuthMiddleware, read);
+router.put("/appointment", AuthMiddleware, update);
+router.delete("/appointment/:id", AuthMiddleware, remove);
 
 export default router;
