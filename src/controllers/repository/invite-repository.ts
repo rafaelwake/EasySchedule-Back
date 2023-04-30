@@ -41,6 +41,7 @@ export class InviteRepository implements InviteRepositoryModel {
   }
 
   async accept(token: string, accept: number): Promise<any> {
+    console.log("valor de check", accept, token);
     const result = await this.database.execute(
       "UPDATE invites SET accepted = ? WHERE token = ?",
       [accept, token]

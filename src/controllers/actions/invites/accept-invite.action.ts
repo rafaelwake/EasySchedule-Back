@@ -1,9 +1,11 @@
 import { IPayloadResponseModel } from "../../../models/infra/response/payload-response.model";
 import { InviteAction } from "./invite-action";
+import Logger from "../../../../config/logger";
 
 export class AcceptInviteAction extends InviteAction {
   async execute(token: string): Promise<IPayloadResponseModel> {
     const invite = await this.repository.readByToken(token);
+    Logger.info("valor invite", invite);
 
     if (!invite)
       return {
