@@ -1,8 +1,8 @@
-import { SchedulingModel } from "../scheduling/scheduling.model";
+import { appointmentModel } from "../appointment/appointment.model";
 import { UserModel } from "../user/user.model";
 
 export interface InviteModel {
-  scheduling_id: Number;
+  appointment_id: Number;
   user_id: string;
   created_by: string;
   token: string;
@@ -10,5 +10,5 @@ export interface InviteModel {
   createdAt: string;
 
   user?: UserModel;
-  scheduling?: SchedulingModel;
+  appointment?: appointmentModel;
 }
