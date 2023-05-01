@@ -1,4 +1,4 @@
-export interface SchedulingModel {
+export interface appointmentModel {
   id?: number;
   title: string;
   description: string;

@@ -13,7 +13,7 @@ export default class EmailService implements IEmail {
     const html = this.template(
       options.name,
       options.event_name,
-      process.env.BASE_URL + "invite?token=" + options.token
+      process.env.BASE_URL + "invite/accept?token=" + options.token
     );
 
     const transporter = nodemailer.createTransport({
@@ -36,6 +36,7 @@ export default class EmailService implements IEmail {
       subject: "Convite de evento",
       html: html,
     });
+    console.log("retorno::::", sended);
   }
 
   private template(name: string, event_name: string, link: string) {

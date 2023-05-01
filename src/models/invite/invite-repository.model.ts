@@ -1,7 +1,7 @@
 import { InviteModel } from "./invite.model";
 
-export interface InviteRepository {
-  create(scheduling_id: number, invite: InviteModel): Promise<any>;
+export interface InviteRepositoryModel {
+  create(appointment_id: number, invite: InviteModel): Promise<any>;
   readByToken(token: string): Promise<any>;
   read(user_id: string): Promise<any>;
   accept(token: string, accept: number): Promise<any>;
