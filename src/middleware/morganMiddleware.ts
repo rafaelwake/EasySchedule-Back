@@ -3,7 +3,10 @@ import morgan, { StreamOptions } from "morgan";
 import config from "config";
 
 import Logger from "../../config/logger";
-
+/**
+ * @description This code sets up a middleware using the Morgan library for logging HTTP requests in an Express.js application. It overrides the default logging function to use a custom logger from the application's configuration and skips logging in non-development environments. The middleware logs the HTTP method, URL, response status code, response content length, and response time in milliseconds. The resulting middleware is exported as the default export of the module.
+ *
+ */
 // Override the stream method by telling
 // Morgan to use our custom logger instead of the console.log.
 const stream: StreamOptions = {

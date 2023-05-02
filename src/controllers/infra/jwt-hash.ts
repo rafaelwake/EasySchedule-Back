@@ -1,6 +1,10 @@
 import { IHash } from "../../models/infra/hash/hash.interface";
 import jwt, { Secret, SignOptions } from "jsonwebtoken";
-
+/**
+Encodes a user object into a JSON Web Token (JWT).
+@param user - An object containing user information such as id, name, and email.
+@returns A promise that resolves to a JWT token string.
+*/
 export class JWTHash implements IHash {
   private secret = "RANDOM_STRING_HERE";
 

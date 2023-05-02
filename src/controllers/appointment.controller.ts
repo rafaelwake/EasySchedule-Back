@@ -6,7 +6,12 @@ import UpdateSchedulerAction from "../controllers/actions/appointment/update-app
 import CreateSchedulerAction from "../controllers/actions/appointment/create-appointment.action";
 import ReadSchedulerAction from "../controllers/actions/appointment/read-appointment.action";
 import DeleteSchedulerAction from "../controllers/actions/appointment/delete-appointment.action";
-
+/**
+ * @description The code defines four functions create, read, update, and remove, which handle HTTP requests for creating, reading, updating, and deleting appointments in a scheduling application. These functions receive the request and response objects and call specific actions from the controllers to handle the business logic of the application. The create function receives appointment data from the request, creates an appointment with the CreateSchedulerAction, and returns the appointment data in the response. The read function receives an optional appointment id from the request, reads the appointment data with the ReadSchedulerAction, and returns the appointment data or an error in the response. The update function receives updated appointment data from the request, updates the appointment with the UpdateSchedulerAction, and returns the updated appointment data or an error in the response. The remove function receives an appointment id from the request, deletes the appointment with the DeleteSchedulerAction, and returns a success message in the response.
+ *
+ *
+ *
+ */
 export const create = async (
   req: any & { user: Partial<UserModel> },
   res: Response

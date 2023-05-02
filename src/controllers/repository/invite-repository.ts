@@ -1,7 +1,9 @@
 import { InviteModel } from "../../models/invite/invite.model";
 import { InviteRepositoryModel } from "../../models/invite/invite-repository.model";
 import { IDatabase } from "../../models/infra/database/database.interface";
-
+/**
+ * @description The code defines a class called "InviteRepository" that implements the "InviteRepositoryModel" interface. This class provides methods to create, read, update and delete invite records in the database. It receives an instance of the "IDatabase" interface as a constructor parameter, which is used to interact with the database. The methods in the class perform SQL queries to the database and return the results. The create method creates a new invite record in the database, the read method returns a list of invite records based on user_id, the accept method updates the "accepted" field of an invite record based on the token, and the remove method deletes an invite record based on the created_by and id fields.
+ */
 export class InviteRepository implements InviteRepositoryModel {
   constructor(private readonly database: IDatabase) {}
 

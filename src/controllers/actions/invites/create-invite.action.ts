@@ -3,7 +3,9 @@ import { UserModel } from "../../../models/user/user.model";
 import { Sha256 } from "../../../models/infra/hash/sha-250";
 import EmailService from "../../infra/email-service";
 import { InviteAction } from "./invite-action";
-
+/**
+@description This file exports a class called "CreateInviteAction", which extends the "InviteAction" class. It defines a method called "execute" which takes a user_id, an appointment_id, and an array of user ids as arguments. It uses the appointment repository to retrieve the appointment associated with the provided user_id and appointment_id. If the appointment is not found, it returns an object with a success boolean set to false, a message indicating that the appointment was not found, and an empty data array. It uses the user repository to retrieve the users associated with the provided user ids and filters out the user associated with the provided user_id. If there are no valid users to send invitations to, it returns an object with a success boolean set to false, a message indicating that no valid users were found, and an empty data array. For each valid user, it generates a token using the Sha256 service, creates an invite record in the invite repository associated with the provided appointment_id and the generated token, and sends an email invitation using the EmailService. It returns an object with a success boolean set to true, a message indicating that the invitations were sent successfully, and an empty data array.
+*/
 export class CreateInviteAction extends InviteAction {
   async execute(
     user_id: string,

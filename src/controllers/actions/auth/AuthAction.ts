@@ -3,7 +3,9 @@ import { UserRepositoryModel } from "../../../models/user/user-repository.model"
 import SQLiteDB from "../../infra/persistence";
 import { JWTHash } from "../../infra/jwt-hash";
 import { UserRepository } from "../../repository/user-repository";
-
+/**
+@description This file exports a class called "AuthAction". It defines a constructor that creates an instance of the SQLite database and uses that instance to create an instance of the user repository. It also defines a method called "execute" which takes an email and a password as arguments. It checks if the email is provided and retrieves the user associated with the email from the user repository. It then checks if the provided password matches the user's password. If the user or password is invalid, it returns an object with a success boolean set to false, a message indicating that the credentials are invalid, and an empty data object. If the user and password are valid, it generates a JWT token using the JWTHash service and returns an object with a success boolean set to true, a message indicating a successful login, and a data object containing the generated token and the user object with the user's id, name, email, and createdAt properties.
+*/
 export class AuthAction {
   protected repository: UserRepositoryModel;
 

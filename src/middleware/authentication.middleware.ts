@@ -2,7 +2,10 @@ import { Request, Response } from "express";
 import { HttpStatusCode } from "../enum/HttpStatusCode.enum";
 import { JWTHash } from "../controllers/infra/jwt-hash";
 import Logger from "../../config/logger";
-
+/**
+ *
+ * @description This is a middleware function that checks if the authorization header is present in the incoming request. If it is not present, the middleware responds with a JSON message indicating that authentication is required to perform the operation.
+ */
 export async function AuthMiddleware(req: any, res: Response, next: any) {
   if (!Object.keys(req.headers).includes("authorization")) {
     res.status(HttpStatusCode.NOT_AUTORIZED).json({

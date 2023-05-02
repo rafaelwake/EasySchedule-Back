@@ -1,7 +1,9 @@
 import sqlite3 from "sqlite3";
 
 import { IDatabase } from "../../models/infra/database/database.interface";
-
+/**
+ *@description This code defines a SQLite database class that implements the IDatabase interface. It contains a static getInstance method that returns an instance of the SQLiteDB class, and an execute method that takes a SQL query and parameters and returns a promise that resolves to the query result. The class also has a static initScript method that creates three database tables if they don't exist: users, appointment, and invites.
+ */
 export default class SQLiteDB implements IDatabase {
   private static instance: SQLiteDB;
   private db: sqlite3.Database;
