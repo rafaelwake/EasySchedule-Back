@@ -1,7 +1,10 @@
 import { UserModel } from "../../models/user/user.model";
 import { UserRepositoryModel } from "../../models/user/user-repository.model";
 import { IDatabase } from "../../models/infra/database/database.interface";
-
+/**
+ * @description 
+This code defines a class named "UserRepository" that implements the "UserRepositoryModel" interface. The class has methods for creating, reading, updating and deleting users from a database, and uses the "IDatabase" interface for database communication. The "create" method inserts a new user into the database, while "read" methods retrieve users based on different criteria (id or email). The "update" method updates the name, email or password of a user.
+ */
 export class UserRepository implements UserRepositoryModel {
   constructor(private readonly database: IDatabase) {}
 

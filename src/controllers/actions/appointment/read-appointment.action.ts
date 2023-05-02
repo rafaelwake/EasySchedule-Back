@@ -1,6 +1,8 @@
 import { IPayloadResponseModel } from "../../../models/infra/response/payload-response.model";
 import { appointmentAction } from "./appointment-action";
-
+/**
+@description This file exports a class called "ReadSchedulerAction", which extends the "appointmentAction" class. It defines a method called "execute" which takes a user_id and an optional id as arguments. If an id is provided, it uses the appointment repository to retrieve the appointment record with the specified id and user_id from the database. It returns an object containing a success boolean (based on whether the record was found), a message (if the record was not found or the user is not associated with the record), and the result object from the appointment repository's readById method. If no id is provided, it uses the appointment repository to retrieve all appointment records associated with the provided user_id. It returns an object containing a success boolean and the result object from the appointment repository's read method.
+*/
 export default class ReadSchedulerAction extends appointmentAction {
   async execute(
     user_id: string,

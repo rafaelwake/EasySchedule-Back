@@ -2,6 +2,11 @@ import { appointmentModel } from "../../models/appointment/appointment.model";
 import { appointmentRepositoryModel } from "../../models/appointment/appointment-repository.model";
 import { IDatabase } from "../../models/infra/database/database.interface";
 
+/**
+Repository class for appointment management
+@param {IDatabase} database - database instance to be used
+@returns {appointmentRepositoryModel} - an instance of the appointment repository model
+*/
 export class appointmentRepository implements appointmentRepositoryModel {
   constructor(private readonly database: IDatabase) {}
 

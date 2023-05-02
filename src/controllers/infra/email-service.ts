@@ -4,6 +4,15 @@ import dotenv from "dotenv";
 dotenv.config();
 
 import * as nodemailer from "nodemailer";
+/**
+ * Sends an email with the given options.
+ * @param {string} email - The email address to send the email to.
+ * @param {Object} options - An object containing the email options.
+ * @param {string} options.name - The name of the person receiving the email.
+ * @param {string} options.event_name - The name of the event being invited to.
+ * @param {string} options.token - The invite token to include in the email.
+ * @returns {Promise<void>} - A promise that resolves when the email has been sent.
+ */
 
 export default class EmailService implements IEmail {
   async send(

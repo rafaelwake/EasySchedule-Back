@@ -1,7 +1,12 @@
 import { IPayloadResponseModel } from "../../../models/infra/response/payload-response.model";
 import { UserModel } from "../../../models/user/user.model";
 import { UserAction } from "./user-action";
-
+/**
+Updates a user's information in the database
+@param id - the id of the user to be updated
+@param data - an object containing the updated user information
+@returns a promise that resolves to an IPayloadResponseModel object indicating the success or failure of the operation
+*/
 export class UpdateUserAction extends UserAction {
   async execute(
     id: string,
